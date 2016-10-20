@@ -23,6 +23,9 @@ nodeptr newNode(int v);
 // if the number already exists
 nodeptr insert(nodeptr root, int n);
 
+// print a tree kind of graphically
+void printTreeG(nodeptr root, int depth);
+
 // Prints the tree recursively
 void printTree(nodeptr root);
 

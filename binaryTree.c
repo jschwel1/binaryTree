@@ -8,7 +8,7 @@
 
 nodeptr newNode(int v){
 	nodeptr n = (nodeptr)malloc(sizeof(struct node));	
-	n->count = 0;
+	n->count = 1;
 	n->val = v;
 	n->left = NULL;
 	n->right = NULL;
@@ -27,10 +27,24 @@ nodeptr insert(nodeptr root, int n){
 
 void printTree(nodeptr root){
 	if (root == NULL) return;
-	if (root->left != NULL) printTree(root->left);
+	printTree(root->left);
 	printNode(root);
-	if (root->left != NULL) printTree(root->right);
+	printTree(root->right);
 	return;
+}
+
+void printTreeG(nodeptr root, int depth){
+	if (root == NULL) return;
+	printTreeG(root->left, depth+1);
+	
+	int i;
+	for (i = 0; i < depth; i++) printf("    ");
+	printNode(root);
+	printf("\n");
+
+	printTreeG(root->right, depth+1);
+	return;
+	
 }
 
 void printNode(nodeptr n){
